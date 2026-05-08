@@ -44,6 +44,10 @@ function normalizeRow(row: any) {
     status: row.status,
     primaryOwnerId: row.primaryOwnerId ?? null,
     primaryOwnerName: row.primaryOwnerName ?? null,
+    primaryOwnerDeptId: row.primaryOwnerDeptId ?? null,
+    secondaryOwnerId: row.secondaryOwnerId ?? null,
+    secondaryOwnerName: row.secondaryOwnerName ?? null,
+    secondaryOwnerDeptId: row.secondaryOwnerDeptId ?? null,
     memo: row.memo ?? null,
     enabled: row.enabled === 1,
     createdBy: row.createdBy ?? null,
@@ -54,19 +58,24 @@ function normalizeRow(row: any) {
 
 const SELECT_WORKSPACE_SQL = `
   SELECT
-    w.WORKSPACE_ID    AS "id",
-    w.CHANNEL_ID      AS "channelId",
-    w.NAME            AS "name",
-    w.STATUS          AS "status",
-    w.PRIMARY_OWNER_ID AS "primaryOwnerId",
-    pu.DISPLAY_NAME   AS "primaryOwnerName",
-    w.MEMO            AS "memo",
-    w.ENABLED         AS "enabled",
-    w.CREATED_BY      AS "createdBy",
-    w.CREATED_AT      AS "createdAt",
-    w.UPDATED_AT      AS "updatedAt"
+    w.WORKSPACE_ID      AS "id",
+    w.CHANNEL_ID        AS "channelId",
+    w.NAME              AS "name",
+    w.STATUS            AS "status",
+    w.PRIMARY_OWNER_ID  AS "primaryOwnerId",
+    pu.DISPLAY_NAME     AS "primaryOwnerName",
+    pu.DEPT_ID          AS "primaryOwnerDeptId",
+    w.SECONDARY_OWNER_ID AS "secondaryOwnerId",
+    su.DISPLAY_NAME     AS "secondaryOwnerName",
+    su.DEPT_ID          AS "secondaryOwnerDeptId",
+    w.MEMO              AS "memo",
+    w.ENABLED           AS "enabled",
+    w.CREATED_BY        AS "createdBy",
+    w.CREATED_AT        AS "createdAt",
+    w.UPDATED_AT        AS "updatedAt"
   FROM CHANNEL_WORKSPACES w
   LEFT JOIN USERS pu ON pu.USER_ID = w.PRIMARY_OWNER_ID
+  LEFT JOIN USERS su ON su.USER_ID = w.SECONDARY_OWNER_ID
 `;
 
 export async function listChannelWorkspaces(connection: any, channelId: number) {
@@ -103,19 +112,24 @@ export async function createChannelWorkspace(
   const name = requiredText(payload.name, '업무명');
   const status = normalizeStatus(payload.status, 'active');
   const primaryOwnerId = nullableUserId(payload.primaryOwnerId);
+  const secondaryOwnerId = nullableUserId(payload.secondaryOwnerId);
+  if (primaryOwnerId && secondaryOwnerId && primaryOwnerId === secondaryOwnerId) {
+    throw validationError('정 엔지니어와 부 엔지니어는 서로 달라야 합니다');
+  }
   const memo = nullableText(payload.memo);
 
   const result = await connection.execute(
     `INSERT INTO CHANNEL_WORKSPACES
-       (CHANNEL_ID, NAME, STATUS, PRIMARY_OWNER_ID, MEMO, CREATED_BY, UPDATED_AT)
+       (CHANNEL_ID, NAME, STATUS, PRIMARY_OWNER_ID, SECONDARY_OWNER_ID, MEMO, CREATED_BY, UPDATED_AT)
      VALUES
-       (:cid, :name, :status, :primaryOwnerId, :memo, :createdBy, SYSTIMESTAMP)
+       (:cid, :name, :status, :primaryOwnerId, :secondaryOwnerId, :memo, :createdBy, SYSTIMESTAMP)
      RETURNING WORKSPACE_ID INTO :workspaceId`,
     {
       cid,
       name,
       status,
       primaryOwnerId,
+      secondaryOwnerId,
       memo,
       createdBy,
       workspaceId: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },

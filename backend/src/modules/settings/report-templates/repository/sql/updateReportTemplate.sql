@@ -1,0 +1,11 @@
+UPDATE REPORT_MASTER_TEMPLATES
+SET
+  CUSTOMER_ID = :customer_id,
+  TEMPLATE_NAME = :name,
+  TEMPLATE_VERSION = :version,
+  HTML_CONTENT = :html,
+  CSS_CONTENT = :css,
+  LLM_PROMPT = :llm_prompt,
+  ENABLED = :enabled,
+  UPDATED_AT = SYSTIMESTAMP
+WHERE TEMPLATE_ID = :id

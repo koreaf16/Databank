@@ -1,0 +1,1 @@
+INSERT INTO EVENT_PARTICIPANTS (EVENT_ID, USER_ID, ROLE) VALUES (:event_id, :user_id, :role)

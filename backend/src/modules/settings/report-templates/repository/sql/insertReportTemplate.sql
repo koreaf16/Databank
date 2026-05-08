@@ -1,0 +1,24 @@
+INSERT INTO REPORT_MASTER_TEMPLATES (
+  TEMPLATE_ID,
+  CUSTOMER_ID,
+  TEMPLATE_NAME,
+  TEMPLATE_VERSION,
+  HTML_CONTENT,
+  CSS_CONTENT,
+  LLM_PROMPT,
+  ENABLED,
+  CREATED_AT,
+  UPDATED_AT
+)
+VALUES (
+  :id,
+  :customer_id,
+  :name,
+  :version,
+  :html,
+  :css,
+  :llm_prompt,
+  :enabled,
+  SYSTIMESTAMP,
+  SYSTIMESTAMP
+)

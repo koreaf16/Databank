@@ -1,0 +1,60 @@
+/**
+ * 파일: frontend/src/features/weekly-report/styles/report.css
+ * 역할: 주간 보고서(Weekly Report) 도메인 전용 스타일 정의.
+ *
+ * 연관 파일:
+ *   - ../components/WeeklyReportPage.tsx
+ *   - ../components/TeamWorkCard.tsx
+ */
+
+/* Report page — 팀 사이드바 */
+.rep-team-nav { width: 168px; flex-shrink: 0; border-right: 1px solid var(--border); padding: 20px 10px; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; }
+.rep-team-nav-title { font-size: 10.5px; font-weight: 700; color: var(--text-4); text-transform: uppercase; padding: 0 8px; margin-bottom: 8px; }
+.rep-team-btn { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 10px; border-radius: 8px; border: none; background: none; color: var(--text-2); font: 500 13px var(--font-sans); cursor: pointer; text-align: left; }
+.rep-team-btn:hover { background: var(--hover); }
+.rep-team-btn.on { background: var(--brand-50); color: var(--brand-700); font-weight: 600; }
+[data-theme="dark"] .rep-team-btn.on { background: rgba(53,107,240,.12); color: var(--brand-300); }
+.rep-team-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Report page — 팀원별 작업 카드 */
+.rep-eng-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.rep-work-list { display: flex; flex-direction: column; }
+.rep-work-item { padding: 16px 18px; }
+.rep-work-item.border-top { border-top: 1px solid var(--border); }
+.rep-work-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.rep-work-summary { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.rep-work-detail-grid { display: flex; flex-direction: column; gap: 6px; }
+.rep-work-detail-row { display: grid; grid-template-columns: 72px 1fr; gap: 12px; font-size: 12.5px; line-height: 1.6; color: var(--text-2); }
+.rep-work-label { font-weight: 600; color: var(--text-3); font-size: 11.5px; padding-top: 1px; }
+.rep-person-list { display: flex; flex-direction: column; gap: 18px; margin-bottom: 24px; }
+.rep-person-row { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(320px, 1fr); gap: 14px; align-items: stretch; }
+.rep-work-card { overflow: hidden; }
+.rep-routine-box { border-top: 1px solid var(--border); }
+.rep-routine-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px 10px; }
+.rep-routine-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.rep-routine-table th { text-align: left; padding: 7px 18px; font-size: 11px; color: var(--text-3); font-weight: 600; border-bottom: 1px solid var(--border); background: var(--bg-sub); }
+.rep-routine-table td { padding: 8px 18px; }
+.rep-schedule-card { overflow: hidden; background: var(--bg-sub); }
+.rep-schedule-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 14px 14px 10px; border-bottom: 1px solid var(--border); background: var(--bg-elev); }
+.rep-schedule-body { padding: 12px; }
+.rep-schedule-day { margin-bottom: 14px; }
+.rep-schedule-day:last-child { margin-bottom: 0; }
+.rep-schedule-day-title { font-size: 11px; font-weight: 700; color: var(--text-3); letter-spacing: .04em; margin-bottom: 6px; border-bottom: 1px solid var(--border); padding-bottom: 3px; }
+.rep-schedule-list { display: flex; flex-direction: column; gap: 6px; }
+.rep-schedule-item { display: flex; align-items: center; gap: 10px; padding: 9px 10px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px; }
+.rep-schedule-remove { background: none; border: none; cursor: pointer; color: var(--text-4); padding: 2px 4px; line-height: 1; border-radius: 4px; flex-shrink: 0; }
+.rep-schedule-remove:hover { background: var(--hover); color: var(--text-2); }
+.rep-empty { text-align: center; color: var(--text-4); font-size: 12.5px; padding: 18px 8px; }
+
+/* Report page (legacy — kept for other uses) */
+.rep-day { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.rep-day:last-child { border-bottom: 0; }
+.rep-day-h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.rep-items { display: flex; flex-direction: column; gap: 6px; }
+.rep-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg-sub); border-radius: 6px; font-size: 12.5px; }
+.rep-next { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+.rep-next:last-child { border-bottom: 0; }
+
+@media (max-width: 1180px) {
+  .rep-person-row { grid-template-columns: 1fr; }
+}

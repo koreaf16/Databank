@@ -1,0 +1,3 @@
+SELECT CATEGORY_ID AS "id", PARENT_ID AS "parentId", NAME AS "name",
+       ICON AS "icon", SORT_ORDER AS "order"
+FROM KB_CATEGORIES

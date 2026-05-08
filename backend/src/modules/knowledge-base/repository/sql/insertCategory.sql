@@ -1,0 +1,2 @@
+INSERT INTO KB_CATEGORIES (CATEGORY_ID, PARENT_ID, NAME, ICON, SORT_ORDER, ENABLED)
+VALUES (:cid, :parent_id, :name, :icon, :order_val, 1)

@@ -1,0 +1,7 @@
+INSERT INTO SERVICE_MASTERS (
+  MASTER_ID, NAME, CATEGORY, DEFAULT_FREQ,
+  VERSIONS_JSON, ITEMS_JSON, ENABLED, CREATED_AT, UPDATED_AT
+) VALUES (
+  :id, :name, :category, :default_freq,
+  :versions_json, :items_json, :enabled, SYSTIMESTAMP, SYSTIMESTAMP
+)

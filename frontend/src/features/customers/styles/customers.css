@@ -1,0 +1,42 @@
+/**
+ * 파일: frontend/src/features/customers/styles/customers.css
+ * 역할: 고객사 관리(Customers) 도메인 전용 스타일 정의.
+ *
+ * 연관 파일:
+ *   - ../components/CustomerMgmtPage.tsx
+ *   - ../api/customerApi.ts
+ */
+
+/* Customer Mgmt */
+.cm-toolbar { display: flex; align-items: center; gap: 8px; }
+.cm-search { flex: 1; max-width: 360px; display: flex; align-items: center; gap: 8px; padding: 0 12px; height: 32px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); }
+.cm-search > svg { color: var(--text-3); }
+.cm-search input { flex: 1; border: 0; background: transparent; outline: none; font: 14px var(--font-sans); color: var(--text); }
+.cm-pager { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid var(--border); }
+.btn.sm.on { background: var(--brand-500); color: #fff; border-color: var(--brand-500); }
+
+/* ── 고객사 관리 (CustomerMgmt) ─────────────────────────────── */
+.cust-mgmt { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.cust-mgmt-head { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.cust-mgmt-count { font-size: 13px; color: var(--text-2); }
+.cust-mgmt-count b { color: var(--text-1); font-weight: 700; }
+
+.cust-search-wrap { display: flex; align-items: center; gap: 6px; background: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 0 8px; height: 32px; }
+.cust-search-input { border: none; background: transparent; outline: none; font-size: 13px; color: var(--text-1); width: 160px; }
+.cust-search-input::placeholder { color: var(--text-3); }
+
+.cust-add-form { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+.cust-add-title { font-size: 13px; font-weight: 600; color: var(--text-1); }
+.cust-add-fields { display: flex; gap: 12px; }
+.cust-add-field { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--text-2); flex: 1; }
+.cust-add-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.req { color: var(--err); font-weight: 700; }
+
+.cust-list { list-style: none; margin: 0; padding: 0; }
+.cust-row { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+.cust-row:last-child { border-bottom: none; }
+.cust-row:hover { background: var(--bg-sub); }
+.cust-row-avt { width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.cust-row-name { font-size: 13px; font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cust-alias-input { width: 140px; flex-shrink: 0; }
+.cust-empty { padding: 48px; text-align: center; color: var(--text-3); font-size: 13px; }

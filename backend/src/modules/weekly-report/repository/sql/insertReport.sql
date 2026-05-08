@@ -1,0 +1,6 @@
+INSERT INTO WEEKLY_REPORTS
+  (TEAM_ID, WEEK_START, WEEK_END, STATUS, CREATED_BY, TEMPLATE_ID, PAYLOAD)
+VALUES
+  (:team_id, TO_DATE(:ws, 'YYYY-MM-DD'), TO_DATE(:we, 'YYYY-MM-DD'),
+   :status, :created_by, :tmpl, :payload)
+RETURNING REPORT_ID INTO :new_id

@@ -1,0 +1,2 @@
+INSERT INTO KB_PRODUCTS (PRODUCT_ID, CANONICAL, DISPLAY_NAME, VENDOR, CATEGORY)
+VALUES (:id, :canonical, :display, :vendor, :category)

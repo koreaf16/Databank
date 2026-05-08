@@ -1,0 +1,8 @@
+UPDATE ATTENDANCE_NOTICES
+SET
+  STATUS          = :status,
+  MANAGER_MEMO    = :manager_memo,
+  MANAGER_USER_ID = :manager_user_id,
+  MANAGER_SEEN_AT = SYSTIMESTAMP,
+  UPDATED_AT      = SYSTIMESTAMP
+WHERE NOTICE_ID = :id

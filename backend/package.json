@@ -1,0 +1,53 @@
+{
+  "name": "@databank/backend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "init:schema": "tsx src/scripts/initOrgCustomerSchema.js",
+    "init:report-template-schema": "tsx src/scripts/initReportTemplateSchema.js",
+    "init:metric-schema": "tsx src/scripts/initMetricSchema.js",
+    "seed:metric-definitions": "tsx src/scripts/seedMetricDefinitions.js",
+    "sync:org-customers": "tsx src/scripts/syncOrgCustomers.js",
+    "cleanup:oracle-26ai": "node --experimental-strip-types src/scripts/cleanupOracle26Ai.ts"
+  },
+  "dependencies": {
+    "axios": "^1.16.0",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "file-type": "^19.6.0",
+    "iconv-lite": "^0.6.3",
+    "mammoth": "^1.12.0",
+    "morgan": "^1.10.0",
+    "multer": "^2.1.1",
+    "oracledb": "^6.7.0",
+    "pdf-parse": "^2.4.5",
+    "xlsx": "^0.18.5",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^25.6.0",
+    "@types/pdf-parse": "^1.1.5",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.3",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

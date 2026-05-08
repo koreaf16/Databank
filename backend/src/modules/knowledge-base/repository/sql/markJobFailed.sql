@@ -1,0 +1,29 @@
+DECLARE
+  v_doc_id KB_INDEX_JOBS.DOC_ID%TYPE;
+BEGIN
+  UPDATE KB_INDEX_JOBS
+  SET STATUS = 'queued', ERROR_MSG = :err, FINISHED_AT = NULL
+  WHERE JOB_ID = :jid AND ATTEMPTS < MAX_ATTEMPTS;
+
+  IF SQL%ROWCOUNT = 0 THEN
+    BEGIN
+      SELECT DOC_ID INTO v_doc_id FROM KB_INDEX_JOBS WHERE JOB_ID = :jid;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN v_doc_id := NULL;
+    END;
+    
+    UPDATE KB_INDEX_JOBS
+    SET STATUS = 'failed', ERROR_MSG = :err, STAGE = '실패', FINISHED_AT = SYSTIMESTAMP
+    WHERE JOB_ID = :jid AND STATUS != 'cancelled';
+    
+    IF v_doc_id IS NOT NULL THEN
+      UPDATE KB_DOCUMENTS
+      SET INDEX_STATUS = 'failed', INDEX_STAGE = 'failed',
+          INDEX_MESSAGE = :err,
+          INDEX_UPDATED_AT = TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'),
+          STATUS = 'failed', UPDATED_AT = SYSTIMESTAMP
+      WHERE DOC_ID = v_doc_id;
+    END IF;
+  END IF;
+END;
+

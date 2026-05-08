@@ -1,0 +1,1 @@
+UPDATE KB_INDEX_JOBS SET PROGRESS = :prog, STAGE = :stage WHERE JOB_ID = :jid

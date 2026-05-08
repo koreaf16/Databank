@@ -1,0 +1,10 @@
+INSERT INTO CHECKLIST_TEMPLATES (
+  NAME, KIND, SCOPE, STATUS, CUSTOMER_ID, SERVICE_MASTER_ID,
+  VERSION, OWNER_ID, SECTIONS_JSON, ENABLED, USED_BY,
+  CREATED_AT, UPDATED_AT
+) VALUES (
+  :name, :kind, :scope, :status, :customer_id, :svc_master_id,
+  :version, :owner_id, :sections_json, 1, 0,
+  SYSTIMESTAMP, SYSTIMESTAMP
+)
+RETURNING TEMPLATE_ID INTO :out_id

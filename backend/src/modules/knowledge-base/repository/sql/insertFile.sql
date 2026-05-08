@@ -1,0 +1,3 @@
+INSERT INTO KB_DOCUMENT_FILES
+  (FILE_ID, DOC_ID, FILE_NAME, MIME_TYPE, SIZE_BYTES, SHA256)
+VALUES (:fid, :did, :fname, :mime, :sz, :sha)

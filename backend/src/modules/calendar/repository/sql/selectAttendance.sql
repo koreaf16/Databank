@@ -1,0 +1,23 @@
+SELECT
+  NOTICE_ID              AS "id",
+  STAFF_USER_ID          AS "staffUserId",
+  KIND                   AS "kind",
+  ATTEND_DATE            AS "attendDate",
+  EFFECTIVE_TIME         AS "effectiveTime",
+  CUSTOMER_ID            AS "customerId",
+  SITE_NAME              AS "siteName",
+  WORK_TITLE             AS "workTitle",
+  MEMO                   AS "memo",
+  MANUAL_LOCATION_TEXT   AS "manualLocationText",
+  GPS_LAT                AS "gpsLat",
+  GPS_LNG                AS "gpsLng",
+  GPS_ACCURACY           AS "gpsAccuracy",
+  GPS_CAPTURED_AT        AS "gpsCapturedAt",
+  GPS_CONSENT            AS "gpsConsent",
+  STATUS                 AS "status",
+  MANAGER_USER_ID        AS "managerUserId",
+  MANAGER_SEEN_AT        AS "managerSeenAt",
+  MANAGER_MEMO           AS "managerMemo",
+  CREATED_AT             AS "createdAt",
+  UPDATED_AT             AS "updatedAt"
+FROM ATTENDANCE_NOTICES

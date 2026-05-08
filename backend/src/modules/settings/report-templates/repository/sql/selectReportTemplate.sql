@@ -1,0 +1,11 @@
+SELECT
+  TEMPLATE_ID AS "id",
+  CUSTOMER_ID AS "customerId",
+  TEMPLATE_NAME AS "name",
+  TEMPLATE_VERSION AS "version",
+  HTML_CONTENT AS "html",
+  CSS_CONTENT AS "css",
+  LLM_PROMPT AS "llmPrompt",
+  ENABLED AS "enabled",
+  UPDATED_AT AS "updatedAt"
+FROM REPORT_MASTER_TEMPLATES

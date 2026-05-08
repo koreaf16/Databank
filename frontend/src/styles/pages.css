@@ -1,0 +1,23 @@
+/**
+ * 파일: frontend/src/styles/pages.css
+ * 역할: 각 도메인별 스타일 시트를 통합 관리하는 메인 스타일 시트.
+ *
+ * 연관 파일:
+ *   - ./pages-base.css
+ *   - ../features/calendar/styles/calendar.css
+ *   - ../features/knowledge-base/styles/kb.css
+ *   - ../features/support-history/styles/history.css
+ *   - ../features/organization/styles/org.css
+ *   - ../features/customers/styles/customers.css
+ *   - ../features/weekly-report/styles/report.css
+ *   - ../features/matrix/styles/matrix.css
+ */
+
+@import './pages-base.css';
+@import '../features/calendar/styles/calendar.css';
+@import '../features/knowledge-base/styles/kb.css';
+@import '../features/support-history/styles/history.css';
+@import '../features/organization/styles/org.css';
+@import '../features/customers/styles/customers.css';
+@import '../features/weekly-report/styles/report.css';
+@import '../features/matrix/styles/matrix.css';

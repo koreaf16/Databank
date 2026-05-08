@@ -1,0 +1,21 @@
+SELECT
+  MODEL_ID         AS "id",
+  NAME             AS "name",
+  VERSION          AS "version",
+  PROVIDER         AS "provider",
+  STATUS           AS "status",
+  ENDPOINT         AS "endpoint",
+  API_KEY          AS "apiKey",
+  TOKENS_USED      AS "tokensUsed",
+  TOKEN_LIMIT      AS "tokenLimit",
+  COST_MONTH       AS "costMonth",
+  CONTEXT_LIMIT_KB AS "contextLimitKb",
+  IS_TRAINING      AS "isTraining",
+  IS_DEFAULT       AS "isDefault",
+  NOTES            AS "notes",
+  USE_CASES        AS "useCases",
+  MODEL_TYPE       AS "modelType",
+  THINKING_MODE    AS "thinkingMode",
+  THINKING_FAMILY  AS "thinkingFamily",
+  UPDATED_AT       AS "updatedAt"
+FROM AI_MODELS

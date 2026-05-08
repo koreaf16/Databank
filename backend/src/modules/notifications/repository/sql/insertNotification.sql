@@ -1,0 +1,4 @@
+INSERT INTO APP_NOTIFICATIONS
+  (NOTIFICATION_ID, USER_ID, CATEGORY, TITLE, MESSAGE, ENTITY_TYPE, ENTITY_ID, DEDUPE_KEY, ENABLED, CREATED_AT)
+VALUES
+  (:id, :user_id, :category, :title, :message, :entity_type, :entity_id, :dedupe_key, 1, SYSTIMESTAMP)

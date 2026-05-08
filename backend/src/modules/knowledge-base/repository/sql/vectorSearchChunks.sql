@@ -1,0 +1,11 @@
+SELECT CHUNK_ID AS "id", DOC_ID AS "docId", FILE_ID AS "fileId",
+       ORDINAL AS "ordinal", HEADING_PATH AS "headingPath",
+       PAGE_FROM AS "pageFrom", PAGE_TO AS "pageTo",
+       TOKEN_COUNT AS "tokenCount", CONTENT_TEXT AS "contentText",
+       CONTEXT_PREFIX AS "contextPrefix",
+       EMBEDDING_MODEL AS "embeddingModel", LANG AS "lang",
+       VECTOR_DISTANCE(EMBEDDING, TO_VECTOR(:qvec), COSINE) AS "score"
+FROM KB_DOCUMENT_CHUNKS
+WHERE EMBEDDING IS NOT NULL
+ORDER BY VECTOR_DISTANCE(EMBEDDING, TO_VECTOR(:qvec), COSINE)
+FETCH FIRST :topk ROWS ONLY

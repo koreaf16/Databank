@@ -1,0 +1,3 @@
+SELECT DEPT_ID AS "id", DEPT_NAME AS "name", PARENT_DEPT_ID AS "parentId",
+       SORT_ORDER AS "sortOrder", ENABLED AS "enabled"
+FROM DEPARTMENTS WHERE DEPT_ID = :id
